@@ -10,9 +10,13 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
-  res.render("index");
+  res.render("index", {title: 'Welcome'});
+});
+app.get('/about', function(req, res) {
+  res.render("about");
 });
 app.listen(3000)
 console.log('Server is running at 3000.....');
